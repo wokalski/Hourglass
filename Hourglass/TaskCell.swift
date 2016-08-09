@@ -18,6 +18,7 @@ final class TaskCell: NSCollectionViewItem {
                 taskNameLabel.stringValue = viewModel.name
                 progressIndicator.doubleValue = viewModel.progress
                 button.image = viewModel.buttonImage
+                button.alternateImage = viewModel.alternateImage
             } else {
                 taskNameLabel.textColor = nil
                 timeLabel.textColor = nil
@@ -25,6 +26,7 @@ final class TaskCell: NSCollectionViewItem {
                 timeLabel.stringValue = ""
                 taskNameLabel.stringValue = ""
                 progressIndicator.doubleValue = 0
+                button.alternateImage = nil
                 button.image = nil
             }
         }

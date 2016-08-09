@@ -8,7 +8,7 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <collectionViewItem id="wxP-9r-pX6" customClass="TaskCell" customModule="TimeBudget" customModuleProvider="target">
+        <collectionViewItem id="wxP-9r-pX6" customClass="TaskCell" customModule="Hourglass" customModuleProvider="target">
             <connections>
                 <outlet property="button" destination="Hai-en-9fG" id="2aH-b0-T5t"/>
                 <outlet property="progressIndicator" destination="hyp-0M-kOm" id="bpH-pD-ZY8"/>
@@ -31,7 +31,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ucQ-bj-Xbf">
-                    <rect key="frame" x="331" y="39" width="71" height="17"/>
+                    <rect key="frame" x="327" y="39" width="71" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Time Label" usesSingleLineMode="YES" id="dHl-wC-7Vn">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -39,16 +39,16 @@
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Hai-en-9fG">
-                    <rect key="frame" x="420" y="37" width="20" height="20"/>
+                    <rect key="frame" x="416" y="37" width="20" height="20"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="PlayButton" imagePosition="only" alignment="center" inset="2" id="bYR-Tx-KWz">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
                         <action selector="clickWithSender:" target="wxP-9r-pX6" id="xF3-oW-bkF"/>
                     </connections>
                 </button>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="pRG-kv-Hv0" customClass="Separator" customModule="TimeBudget" customModuleProvider="target">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="pRG-kv-Hv0" customClass="Separator" customModule="Hourglass" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="450" height="1"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="IOQ-uw-qWH"/>
@@ -62,7 +62,7 @@
                 <constraint firstItem="hyp-0M-kOm" firstAttribute="top" secondItem="vg0-v7-udg" secondAttribute="bottom" constant="12" id="6fb-m4-DuT"/>
                 <constraint firstAttribute="trailing" secondItem="pRG-kv-Hv0" secondAttribute="trailing" id="8mZ-Bb-HwD"/>
                 <constraint firstItem="ucQ-bj-Xbf" firstAttribute="centerY" secondItem="vg0-v7-udg" secondAttribute="centerY" id="Eze-Up-4zi"/>
-                <constraint firstAttribute="trailing" secondItem="Hai-en-9fG" secondAttribute="trailing" constant="10" id="FgC-i9-QUm"/>
+                <constraint firstAttribute="trailing" secondItem="Hai-en-9fG" secondAttribute="trailing" constant="14" id="FgC-i9-QUm"/>
                 <constraint firstItem="ucQ-bj-Xbf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vg0-v7-udg" secondAttribute="trailing" constant="30" id="Gia-S7-aAX"/>
                 <constraint firstAttribute="bottom" secondItem="pRG-kv-Hv0" secondAttribute="bottom" id="QGk-B6-3ea"/>
                 <constraint firstAttribute="trailing" secondItem="hyp-0M-kOm" secondAttribute="trailing" constant="20" id="Uzx-ep-ykk"/>

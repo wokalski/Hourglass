@@ -8,6 +8,7 @@ struct TaskCellViewModel {
     let name: String
     let onClick: () -> Void
     let buttonImage: NSImage
+    let alternateImage: NSImage
 }
 
 extension TaskCellViewModel {
@@ -23,19 +24,9 @@ extension TaskCellViewModel {
         progress = task.timeElapsed/task.totalTime
         timeText = "\(task.timeElapsed.timeString())/\(task.totalTime.timeString())"
         name = task.name
-        self.buttonImage = running ? #imageLiteral(resourceName: "PauseButton") : #imageLiteral(resourceName: "PlayButton")
+        buttonImage = running ? #imageLiteral(resourceName: "PauseButton") : #imageLiteral(resourceName: "PlayButton")
+        alternateImage = running ? #imageLiteral(resourceName: "PauseButtonAlternate") : #imageLiteral(resourceName: "PlayButtonAlternate")
         self.onClick = onClick
-    }
-    
-    func set(selected: Bool) -> TaskCellViewModel {
-        return TaskCellViewModel(
-            backgroundColor: backgroundForState(selected: selected),
-            textColor: textColor,
-            progress: progress,
-            timeText: timeText,
-            name: name,
-            onClick: onClick,
-            buttonImage: buttonImage)
     }
 }
 
