@@ -83,14 +83,14 @@
 		C94EEA4C1D5600C700649120 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = Carthage/Build/Mac/RealmSwift.framework.dSYM; sourceTree = "<group>"; };
 		C96695231D5A00F800ABF907 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		C96695241D5A00F800ABF907 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C96695251D5A00F800ABF907 /* Application.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Application.xib; sourceTree = "<group>"; };
+		C96695251D5A00F800ABF907 /* Application.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Application.xib; path = Hourglass/Application.xib; sourceTree = "<group>"; };
 		C96695261D5A00F800ABF907 /* ApplicationReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationReducer.swift; sourceTree = "<group>"; };
-		C96695271D5A00F800ABF907 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C96695271D5A00F800ABF907 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Hourglass/Assets.xcassets; sourceTree = "<group>"; };
 		C96695281D5A00F800ABF907 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		C96695291D5A00F800ABF907 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		C966952A1D5A00F800ABF907 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		C966952B1D5A00F800ABF907 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
-		C966952C1D5A00F800ABF907 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C966952C1D5A00F800ABF907 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Hourglass/Info.plist; sourceTree = "<group>"; };
 		C966952D1D5A00F800ABF907 /* NewTask.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTask.xib; sourceTree = "<group>"; };
 		C966952E1D5A00F800ABF907 /* NewTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskCell.swift; sourceTree = "<group>"; };
 		C966952F1D5A00F800ABF907 /* RealmObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
@@ -130,30 +130,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C96695221D5A00F800ABF907 /* Hourglass */ = {
+		C9059C641D5A19760001ED54 /* Task Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C96695231D5A00F800ABF907 /* Actions.swift */,
-				C96695241D5A00F800ABF907 /* AppDelegate.swift */,
-				C96695251D5A00F800ABF907 /* Application.xib */,
-				C96695261D5A00F800ABF907 /* ApplicationReducer.swift */,
-				C96695271D5A00F800ABF907 /* Assets.xcassets */,
-				C96695281D5A00F800ABF907 /* Cells.swift */,
-				C96695291D5A00F800ABF907 /* DataSource.swift */,
-				C966952A1D5A00F800ABF907 /* DictionaryExtensions.swift */,
-				C966952B1D5A00F800ABF907 /* Dispatcher.swift */,
-				C966952C1D5A00F800ABF907 /* Info.plist */,
-				C966952D1D5A00F800ABF907 /* NewTask.xib */,
-				C966952E1D5A00F800ABF907 /* NewTaskCell.swift */,
-				C966952F1D5A00F800ABF907 /* RealmObjects.swift */,
-				C96695301D5A00F800ABF907 /* SideEffects.swift */,
-				C96695311D5A00F800ABF907 /* State.swift */,
-				C96695321D5A00F800ABF907 /* Store.swift */,
 				C96695331D5A00F800ABF907 /* Task.xib */,
 				C96695341D5A00F800ABF907 /* TaskCell.swift */,
 				C96695351D5A00F800ABF907 /* TaskCellViewModel.swift */,
-				C96695361D5A00F800ABF907 /* TasksController.storyboard */,
+			);
+			name = "Task Cell";
+			sourceTree = "<group>";
+		};
+		C9059C651D5A19910001ED54 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				C96695231D5A00F800ABF907 /* Actions.swift */,
+				C96695261D5A00F800ABF907 /* ApplicationReducer.swift */,
+				C96695301D5A00F800ABF907 /* SideEffects.swift */,
+				C96695311D5A00F800ABF907 /* State.swift */,
+				C96695321D5A00F800ABF907 /* Store.swift */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
+		C9059C661D5A19980001ED54 /* Data source */ = {
+			isa = PBXGroup;
+			children = (
+				C96695281D5A00F800ABF907 /* Cells.swift */,
+				C96695291D5A00F800ABF907 /* DataSource.swift */,
+			);
+			name = "Data source";
+			sourceTree = "<group>";
+		};
+		C9059C671D5A199E0001ED54 /* generic utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C966952A1D5A00F800ABF907 /* DictionaryExtensions.swift */,
+				C966952B1D5A00F800ABF907 /* Dispatcher.swift */,
+			);
+			name = "generic utilities";
+			sourceTree = "<group>";
+		};
+		C9059C681D5A19A80001ED54 /* New Task */ = {
+			isa = PBXGroup;
+			children = (
+				C966952D1D5A00F800ABF907 /* NewTask.xib */,
+				C966952E1D5A00F800ABF907 /* NewTaskCell.swift */,
+			);
+			name = "New Task";
+			sourceTree = "<group>";
+		};
+		C96695221D5A00F800ABF907 /* Hourglass */ = {
+			isa = PBXGroup;
+			children = (
+				C96695241D5A00F800ABF907 /* AppDelegate.swift */,
 				C96695371D5A00F800ABF907 /* ViewController.swift */,
+				C96695361D5A00F800ABF907 /* TasksController.storyboard */,
+				C966952F1D5A00F800ABF907 /* RealmObjects.swift */,
+				C9059C651D5A19910001ED54 /* State */,
+				C9059C661D5A19980001ED54 /* Data source */,
+				C9059C671D5A199E0001ED54 /* generic utilities */,
+				C9059C641D5A19760001ED54 /* Task Cell */,
+				C9059C681D5A19A80001ED54 /* New Task */,
 			);
 			path = Hourglass;
 			sourceTree = "<group>";
@@ -182,6 +219,9 @@
 			isa = PBXGroup;
 			children = (
 				C96695221D5A00F800ABF907 /* Hourglass */,
+				C96695251D5A00F800ABF907 /* Application.xib */,
+				C96695271D5A00F800ABF907 /* Assets.xcassets */,
+				C966952C1D5A00F800ABF907 /* Info.plist */,
 				C96695381D5A00F800ABF907 /* HourglassTests */,
 				C96695521D5A011100ABF907 /* Frameworks */,
 			);
@@ -258,7 +298,9 @@
 				TargetAttributes = {
 					C9B361211D5516E5002A013A = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 25UJHK4C3S;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -446,7 +488,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Hourglass/Hourglass.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 25UJHK4C3S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -464,7 +508,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Hourglass/Hourglass.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 25UJHK4C3S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
