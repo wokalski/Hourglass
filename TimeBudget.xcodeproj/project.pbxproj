@@ -7,11 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C91535E61D569A8700DD3E54 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91535E51D569A8700DD3E54 /* Cells.swift */; };
+		C91535E81D56A4DD00DD3E54 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91535E71D56A4DD00DD3E54 /* Actions.swift */; };
+		C91535EA1D5774AC00DD3E54 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91535E91D5774AC00DD3E54 /* DataSource.swift */; };
+		C91535EC1D578AE700DD3E54 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91535EB1D578AE700DD3E54 /* RealmObjects.swift */; };
+		C922EEE81D57A8B6008EF1A7 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94EEA431D56009C00649120 /* Realm.framework */; };
+		C922EEE91D57A8B6008EF1A7 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94EEA441D56009C00649120 /* RealmSwift.framework */; };
+		C93739B01D564F0300F97752 /* NewTask.xib in Resources */ = {isa = PBXBuildFile; fileRef = C93739AF1D564F0300F97752 /* NewTask.xib */; };
+		C93739B21D5650B700F97752 /* Task.xib in Resources */ = {isa = PBXBuildFile; fileRef = C93739B11D5650B700F97752 /* Task.xib */; };
+		C94EEA451D56009C00649120 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94EEA431D56009C00649120 /* Realm.framework */; };
+		C94EEA461D56009C00649120 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C94EEA431D56009C00649120 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C94EEA471D56009C00649120 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94EEA441D56009C00649120 /* RealmSwift.framework */; };
+		C94EEA481D56009C00649120 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C94EEA441D56009C00649120 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C94EEA4D1D5600C700649120 /* Realm.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = C94EEA4B1D5600C700649120 /* Realm.framework.dSYM */; };
+		C94EEA4E1D5600C700649120 /* RealmSwift.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = C94EEA4C1D5600C700649120 /* RealmSwift.framework.dSYM */; };
+		C94EEA521D56078400649120 /* NewTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94EEA511D56078400649120 /* NewTaskCell.swift */; };
+		C965DE941D59EF80002B7268 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = C965DE931D59EF80002B7268 /* Application.xib */; };
 		C9B361261D5516E6002A013A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B361251D5516E6002A013A /* AppDelegate.swift */; };
 		C9B361281D5516E6002A013A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B361271D5516E6002A013A /* ViewController.swift */; };
 		C9B3612A1D5516E6002A013A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B361291D5516E6002A013A /* Assets.xcassets */; };
-		C9B3612D1D5516E6002A013A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3612B1D5516E6002A013A /* Main.storyboard */; };
 		C9B361381D5516E6002A013A /* TimeBudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B361371D5516E6002A013A /* TimeBudgetTests.swift */; };
+		C9B361471D552368002A013A /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B361461D552368002A013A /* TaskCell.swift */; };
+		C9B4618B1D58F5A9008F949D /* SideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B4618A1D58F5A9008F949D /* SideEffects.swift */; };
+		C9D476281D58ABBC009913F5 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D476271D58ABBC009913F5 /* State.swift */; };
+		C9D4762A1D58AD0A009913F5 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D476291D58AD0A009913F5 /* Dispatcher.swift */; };
+		C9D4762D1D58ADE8009913F5 /* ApplicationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D4762C1D58ADE8009913F5 /* ApplicationReducer.swift */; };
+		C9D476311D58AE46009913F5 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D476301D58AE46009913F5 /* DictionaryExtensions.swift */; };
+		C9D476331D58B00B009913F5 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D476321D58B00B009913F5 /* Store.swift */; };
+		C9FACC401D59CB22000FB11D /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FACC3F1D59CB22000FB11D /* TaskCellViewModel.swift */; };
+		C9FACC491D59EE8A000FB11D /* TasksController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FACC481D59EE8A000FB11D /* TasksController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,16 +48,62 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C94EEA491D56009C00649120 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C94EEA481D56009C00649120 /* RealmSwift.framework in Embed Frameworks */,
+				C94EEA461D56009C00649120 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C94EEA4A1D5600BD00649120 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				C94EEA4D1D5600C700649120 /* Realm.framework.dSYM in CopyFiles */,
+				C94EEA4E1D5600C700649120 /* RealmSwift.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		C91535E51D569A8700DD3E54 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		C91535E71D56A4DD00DD3E54 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		C91535E91D5774AC00DD3E54 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		C91535EB1D578AE700DD3E54 /* RealmObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
+		C93739AF1D564F0300F97752 /* NewTask.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTask.xib; sourceTree = "<group>"; };
+		C93739B11D5650B700F97752 /* Task.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Task.xib; sourceTree = "<group>"; };
+		C94EEA431D56009C00649120 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/Mac/Realm.framework; sourceTree = "<group>"; };
+		C94EEA441D56009C00649120 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/Mac/RealmSwift.framework; sourceTree = "<group>"; };
+		C94EEA4B1D5600C700649120 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/Mac/Realm.framework.dSYM; sourceTree = "<group>"; };
+		C94EEA4C1D5600C700649120 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = Carthage/Build/Mac/RealmSwift.framework.dSYM; sourceTree = "<group>"; };
+		C94EEA511D56078400649120 /* NewTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskCell.swift; sourceTree = "<group>"; };
+		C965DE931D59EF80002B7268 /* Application.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Application.xib; sourceTree = "<group>"; };
 		C9B361221D5516E5002A013A /* TimeBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B361251D5516E6002A013A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B361271D5516E6002A013A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9B361291D5516E6002A013A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C9B3612C1D5516E6002A013A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9B3612E1D5516E6002A013A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9B361331D5516E6002A013A /* TimeBudgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeBudgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B361371D5516E6002A013A /* TimeBudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBudgetTests.swift; sourceTree = "<group>"; };
 		C9B361391D5516E6002A013A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9B361461D552368002A013A /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		C9B4618A1D58F5A9008F949D /* SideEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideEffects.swift; sourceTree = "<group>"; };
+		C9D476271D58ABBC009913F5 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		C9D476291D58AD0A009913F5 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		C9D4762C1D58ADE8009913F5 /* ApplicationReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationReducer.swift; sourceTree = "<group>"; };
+		C9D476301D58AE46009913F5 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
+		C9D476321D58B00B009913F5 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		C9FACC3F1D59CB22000FB11D /* TaskCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellViewModel.swift; sourceTree = "<group>"; };
+		C9FACC481D59EE8A000FB11D /* TasksController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TasksController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C94EEA471D56009C00649120 /* RealmSwift.framework in Frameworks */,
+				C94EEA451D56009C00649120 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,15 +120,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C922EEE81D57A8B6008EF1A7 /* Realm.framework in Frameworks */,
+				C922EEE91D57A8B6008EF1A7 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C983709D1D56107D0029978A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C94EEA4B1D5600C700649120 /* Realm.framework.dSYM */,
+				C94EEA4C1D5600C700649120 /* RealmSwift.framework.dSYM */,
+				C94EEA431D56009C00649120 /* Realm.framework */,
+				C94EEA441D56009C00649120 /* RealmSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C9B361191D5516E5002A013A = {
 			isa = PBXGroup;
 			children = (
+				C983709D1D56107D0029978A /* Frameworks */,
 				C9B361241D5516E5002A013A /* TimeBudget */,
 				C9B361361D5516E6002A013A /* TimeBudgetTests */,
 				C9B361231D5516E5002A013A /* Products */,
@@ -77,8 +163,16 @@
 			children = (
 				C9B361251D5516E6002A013A /* AppDelegate.swift */,
 				C9B361271D5516E6002A013A /* ViewController.swift */,
+				C9D476321D58B00B009913F5 /* Store.swift */,
+				C91535EB1D578AE700DD3E54 /* RealmObjects.swift */,
+				C9FACC421D59CC49000FB11D /* Collection View Data Source */,
+				C9D4762B1D58ADDA009913F5 /* State */,
+				C9FACC431D59CC68000FB11D /* Generic utilities */,
+				C9FACC3E1D59CB0F000FB11D /* TaskCell */,
+				C9FACC411D59CC1B000FB11D /* New Task Cell */,
 				C9B361291D5516E6002A013A /* Assets.xcassets */,
-				C9B3612B1D5516E6002A013A /* Main.storyboard */,
+				C965DE931D59EF80002B7268 /* Application.xib */,
+				C9FACC481D59EE8A000FB11D /* TasksController.storyboard */,
 				C9B3612E1D5516E6002A013A /* Info.plist */,
 			);
 			path = TimeBudget;
@@ -93,6 +187,54 @@
 			path = TimeBudgetTests;
 			sourceTree = "<group>";
 		};
+		C9D4762B1D58ADDA009913F5 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				C9D476271D58ABBC009913F5 /* State.swift */,
+				C9D4762C1D58ADE8009913F5 /* ApplicationReducer.swift */,
+				C91535E71D56A4DD00DD3E54 /* Actions.swift */,
+				C9B4618A1D58F5A9008F949D /* SideEffects.swift */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
+		C9FACC3E1D59CB0F000FB11D /* TaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9B361461D552368002A013A /* TaskCell.swift */,
+				C9FACC3F1D59CB22000FB11D /* TaskCellViewModel.swift */,
+				C93739B11D5650B700F97752 /* Task.xib */,
+			);
+			name = TaskCell;
+			sourceTree = "<group>";
+		};
+		C9FACC411D59CC1B000FB11D /* New Task Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C94EEA511D56078400649120 /* NewTaskCell.swift */,
+				C93739AF1D564F0300F97752 /* NewTask.xib */,
+			);
+			name = "New Task Cell";
+			sourceTree = "<group>";
+		};
+		C9FACC421D59CC49000FB11D /* Collection View Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				C91535E91D5774AC00DD3E54 /* DataSource.swift */,
+				C91535E51D569A8700DD3E54 /* Cells.swift */,
+			);
+			name = "Collection View Data Source";
+			sourceTree = "<group>";
+		};
+		C9FACC431D59CC68000FB11D /* Generic utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C9D476291D58AD0A009913F5 /* Dispatcher.swift */,
+				C9D476301D58AE46009913F5 /* DictionaryExtensions.swift */,
+			);
+			name = "Generic utilities";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,6 +245,8 @@
 				C9B3611E1D5516E5002A013A /* Sources */,
 				C9B3611F1D5516E5002A013A /* Frameworks */,
 				C9B361201D5516E5002A013A /* Resources */,
+				C94EEA491D56009C00649120 /* Embed Frameworks */,
+				C94EEA4A1D5600BD00649120 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -138,14 +282,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = wczekalski;
 				TargetAttributes = {
 					C9B361211D5516E5002A013A = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					C9B361321D5516E6002A013A = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = C9B361211D5516E5002A013A;
 					};
 				};
@@ -174,8 +320,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93739B21D5650B700F97752 /* Task.xib in Resources */,
+				C965DE941D59EF80002B7268 /* Application.xib in Resources */,
 				C9B3612A1D5516E6002A013A /* Assets.xcassets in Resources */,
-				C9B3612D1D5516E6002A013A /* Main.storyboard in Resources */,
+				C9FACC491D59EE8A000FB11D /* TasksController.storyboard in Resources */,
+				C93739B01D564F0300F97752 /* NewTask.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,8 +342,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C91535EC1D578AE700DD3E54 /* RealmObjects.swift in Sources */,
 				C9B361281D5516E6002A013A /* ViewController.swift in Sources */,
+				C9D476311D58AE46009913F5 /* DictionaryExtensions.swift in Sources */,
+				C91535EA1D5774AC00DD3E54 /* DataSource.swift in Sources */,
+				C94EEA521D56078400649120 /* NewTaskCell.swift in Sources */,
+				C9D4762A1D58AD0A009913F5 /* Dispatcher.swift in Sources */,
+				C9D4762D1D58ADE8009913F5 /* ApplicationReducer.swift in Sources */,
+				C9D476331D58B00B009913F5 /* Store.swift in Sources */,
+				C9B361471D552368002A013A /* TaskCell.swift in Sources */,
+				C9FACC401D59CB22000FB11D /* TaskCellViewModel.swift in Sources */,
+				C9B4618B1D58F5A9008F949D /* SideEffects.swift in Sources */,
+				C9D476281D58ABBC009913F5 /* State.swift in Sources */,
+				C91535E81D56A4DD00DD3E54 /* Actions.swift in Sources */,
 				C9B361261D5516E6002A013A /* AppDelegate.swift in Sources */,
+				C91535E61D569A8700DD3E54 /* Cells.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,17 +378,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		C9B3612B1D5516E6002A013A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9B3612C1D5516E6002A013A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		C9B3613A1D5516E6002A013A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -242,8 +393,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -287,8 +440,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -315,10 +470,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = TimeBudget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wczekalski.TimeBudget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -327,10 +487,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = TimeBudget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wczekalski.TimeBudget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -339,10 +505,16 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = TimeBudgetTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wczekalski.TimeBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeBudget.app/Contents/MacOS/TimeBudget";
 			};
 			name = Debug;
@@ -352,10 +524,17 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = TimeBudgetTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wczekalski.TimeBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeBudget.app/Contents/MacOS/TimeBudget";
 			};
 			name = Release;
@@ -379,6 +558,7 @@
 				C9B3613E1D5516E6002A013A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9B3613F1D5516E6002A013A /* Build configuration list for PBXNativeTarget "TimeBudgetTests" */ = {
 			isa = XCConfigurationList;
@@ -387,6 +567,7 @@
 				C9B361411D5516E6002A013A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

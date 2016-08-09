@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11185.3" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11185.3"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <collectionViewItem storyboardIdentifier="NewTask" id="UeU-zo-POo" customClass="NewTaskCell" customModule="TimeBudget" customModuleProvider="target">
+            <view key="view" id="gnQ-iK-pwC">
+                <rect key="frame" x="0.0" y="0.0" width="450" height="69"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nnr-GC-u1o">
+                        <rect key="frame" x="18" y="26" width="350" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" placeholderString="New task" usesSingleLineMode="YES" id="MVj-ks-iyL">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="add:" target="UeU-zo-POo" id="X7S-gG-Qpt"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VGW-fC-RSP">
+                        <rect key="frame" x="384" y="26" width="52" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="lCw-Aj-8Oe"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" alignment="right" placeholderString="HH:MM" usesSingleLineMode="YES" id="59z-Hc-p3b">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="add:" target="UeU-zo-POo" id="sQB-gG-Sc7"/>
+                        </connections>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Nnr-GC-u1o" firstAttribute="centerY" secondItem="gnQ-iK-pwC" secondAttribute="centerY" id="8mH-0H-hjN"/>
+                    <constraint firstItem="Nnr-GC-u1o" firstAttribute="leading" secondItem="gnQ-iK-pwC" secondAttribute="leading" constant="20" id="Ecg-uX-2Qk"/>
+                    <constraint firstItem="VGW-fC-RSP" firstAttribute="centerY" secondItem="gnQ-iK-pwC" secondAttribute="centerY" id="Px2-x5-DPS"/>
+                    <constraint firstItem="VGW-fC-RSP" firstAttribute="leading" secondItem="Nnr-GC-u1o" secondAttribute="trailing" constant="20" id="UCj-DK-3mh"/>
+                    <constraint firstAttribute="trailing" secondItem="VGW-fC-RSP" secondAttribute="trailing" constant="16" id="gX3-Wd-l4x"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="taskNameLabel" destination="Nnr-GC-u1o" id="4ex-d3-81x"/>
+                <outlet property="timeLabel" destination="VGW-fC-RSP" id="GBI-iP-zxh"/>
+            </connections>
+            <point key="canvasLocation" x="438" y="299.5"/>
+        </collectionViewItem>
+    </objects>
+</document>

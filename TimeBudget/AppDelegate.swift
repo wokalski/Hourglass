@@ -11,16 +11,64 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+    let statusItem: NSStatusItem
+    lazy var popover: NSPopover = {
+        let popover = NSPopover()
+        let bundle = Bundle(for: ViewController.self)
+        let storyboard = NSStoryboard(name: "TasksController", bundle: bundle)
+        popover.contentViewController = storyboard.instantiateInitialController() as! ViewController
+        return popover
+    }()
+    lazy var quitItem: NSMenuItem = {
+        return NSMenuItem()
+    }()
+    lazy var menu: NSMenu = {
+        let menu = NSMenu(title: "")
+        let item = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
+        menu.addItem(item)
+        return menu
+    }()
+    
+    override init() {
+        statusItem = NSStatusBar.system().statusItem(withLength: 30)
+        statusItem.alternateImage = #imageLiteral(resourceName: "AlternateIcon")
+        statusItem.image = #imageLiteral(resourceName: "Icon")
+        statusItem.action = #selector(togglePopover(sender:))
+        statusItem.sendAction(on: [.leftMouseUp, .rightMouseUp])
+        super.init()
     }
-
-    func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
+    
+    func togglePopover(sender: AnyObject?) {
+        if popover.isShown {
+            popover.performClose(sender)
+        } else {
+            if shouldShowPopover() {
+                if let button = statusItem.button {
+                    popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+                }
+            } else {
+                statusItem.popUpMenu(self.menu)
+            }
+        }
     }
-
-
+    
+    func quit() {
+        NSApp.terminate(self)
+    }
 }
+
+func shouldShowPopover() -> Bool {
+    let event = NSApp.currentEvent
+    if let event = event {
+        let click = event.associatedEventsMask
+        let modifier = event.modifierFlags
+        let rightClick = click.contains(.rightMouseUp)
+        let optionClick = modifier.contains(.option)
+        if rightClick || optionClick {
+            return false
+        }
+    }
+    return true
+}
+
 
