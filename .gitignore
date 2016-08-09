@@ -1,0 +1,4 @@
+DerivedData/*
+Carthage/*
+Cartfile.resolved
+swift3.xcconfig
