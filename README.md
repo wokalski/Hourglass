@@ -12,3 +12,6 @@ The goal is to learn about my time spending habits and ideally be more productiv
 ## License
 MIT. You can find it in the `LICENSE` file.
 Please note that this is not a product and therefore I am not expecting to spend a lot of time developing it further.
+
+## Contributing
+Feel free to submit issues and Pull Request. I do not, however, promise to implement anything even if it makes perfect sense. This is just a little utility.
