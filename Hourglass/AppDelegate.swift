@@ -28,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(item)
         return menu
     }()
+    var monitor: AnyObject?
     
     override init() {
         statusItem = NSStatusBar.system().statusItem(withLength: 30)
@@ -41,9 +42,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func togglePopover(sender: AnyObject?) {
         if popover.isShown {
             popover.performClose(sender)
+            if let monitor = self.monitor {
+              NSEvent.removeMonitor(monitor)  
+            }
         } else {
             if shouldShowPopover() {
                 if let button = statusItem.button {
+                    monitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown], handler: { [weak self] _ in
+                        self?.togglePopover(sender: self)
+                    })
                     popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
                 }
             } else {
