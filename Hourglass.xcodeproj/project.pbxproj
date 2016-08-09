@@ -179,7 +179,7 @@
 			name = "New Task";
 			sourceTree = "<group>";
 		};
-		C96695221D5A00F800ABF907 /* Hourglass */ = {
+		C96695221D5A00F800ABF907 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				C96695241D5A00F800ABF907 /* AppDelegate.swift */,
@@ -192,6 +192,7 @@
 				C9059C641D5A19760001ED54 /* Task Cell */,
 				C9059C681D5A19A80001ED54 /* New Task */,
 			);
+			name = Source;
 			path = Hourglass;
 			sourceTree = "<group>";
 		};
@@ -215,24 +216,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C983709D1D56107D0029978A /* Frameworks */ = {
+		C9B361191D5516E5002A013A = {
 			isa = PBXGroup;
 			children = (
-				C96695221D5A00F800ABF907 /* Hourglass */,
+				C90AE8001D5A01B600AF2CB9 /* Hourglass.entitlements */,
+				C96695221D5A00F800ABF907 /* Source */,
 				C96695251D5A00F800ABF907 /* Application.xib */,
 				C96695271D5A00F800ABF907 /* Assets.xcassets */,
 				C966952C1D5A00F800ABF907 /* Info.plist */,
 				C96695381D5A00F800ABF907 /* HourglassTests */,
 				C96695521D5A011100ABF907 /* Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C9B361191D5516E5002A013A = {
-			isa = PBXGroup;
-			children = (
-				C90AE8001D5A01B600AF2CB9 /* Hourglass.entitlements */,
-				C983709D1D56107D0029978A /* Frameworks */,
 				C9B361231D5516E5002A013A /* Products */,
 			);
 			sourceTree = "<group>";
