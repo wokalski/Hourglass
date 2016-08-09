@@ -4,8 +4,8 @@ import RealmSwift
 typealias TaskID = Int
 
 class Task: Object {
-    dynamic var timeElapsed: TimeInterval = 0
-    dynamic var totalTime: TimeInterval = 0
+    dynamic var timeElapsed: IntMax = 0
+    dynamic var totalTime: IntMax = 0
     dynamic var name = ""
     dynamic var id: TaskID = Int(NSDate.timeIntervalSinceReferenceDate)
     
@@ -16,8 +16,8 @@ class Task: Object {
 
 protocol TaskProtocol {
     var id: TaskID { get }
-    var timeElapsed: TimeInterval { get }
-    var totalTime: TimeInterval { get }
+    var timeElapsed: IntMax { get }
+    var totalTime: IntMax { get }
     var name: String { get }
 }
 
@@ -32,8 +32,8 @@ extension Task {
 
 struct TaskUpdate: TaskProtocol {
     let id: TaskID
-    let timeElapsed: TimeInterval
-    let totalTime: TimeInterval
+    let timeElapsed: IntMax
+    let totalTime: IntMax
     let name: String
 }
 
@@ -45,7 +45,7 @@ extension TaskUpdate {
         self.name = task.name
     }
     
-    func set(timeElapsed: TimeInterval) -> TaskUpdate {
+    func set(timeElapsed: IntMax) -> TaskUpdate {
         return TaskUpdate(id: id,
                           timeElapsed: timeElapsed,
                           totalTime: totalTime,

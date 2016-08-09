@@ -7,8 +7,8 @@ struct TaskCellViewModel {
     let timeText: String
     let name: String
     let onClick: () -> Void
-    let buttonImage: NSImage
-    let alternateImage: NSImage
+    let buttonImage: NSImage?
+    let alternateImage: NSImage?
 }
 
 extension TaskCellViewModel {
@@ -19,14 +19,22 @@ extension TaskCellViewModel {
         let white = NSColor.white
         let black = NSColor.black
         
+        let complete = task.totalTime == task.timeElapsed
+        
         backgroundColor = backgroundForState(selected: selected)
         textColor = selected ? white : black
-        progress = task.timeElapsed/task.totalTime
+        progress = Double(task.timeElapsed) / Double(task.totalTime)
         timeText = "\(task.timeElapsed.timeString())/\(task.totalTime.timeString())"
         name = task.name
-        buttonImage = running ? #imageLiteral(resourceName: "PauseButton") : #imageLiteral(resourceName: "PlayButton")
-        alternateImage = running ? #imageLiteral(resourceName: "PauseButtonAlternate") : #imageLiteral(resourceName: "PlayButtonAlternate")
         self.onClick = onClick
+
+        if complete {
+            buttonImage = nil
+            alternateImage = nil
+        } else {
+            buttonImage = running ? #imageLiteral(resourceName: "PauseButton") : #imageLiteral(resourceName: "PlayButton")
+            alternateImage = running ? #imageLiteral(resourceName: "PauseButtonAlternate") : #imageLiteral(resourceName: "PlayButtonAlternate")
+        }
     }
 }
 
@@ -36,9 +44,9 @@ private func backgroundForState(selected: Bool) -> CGColor {
     return selected ? blue : clear
 }
 
-extension TimeInterval {
+extension IntMax {
     func timeString() -> String {
-        let interval = Int(self)
+        let interval = self
         let seconds = interval % 60
         let minutes = (interval / 60) % 60
         let hours = (interval / 3600)

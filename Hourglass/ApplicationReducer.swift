@@ -17,7 +17,10 @@ func applicationReducer(state: State, action: Action) -> State {
                      tasks: state.tasks.deleting(task.id),
                      selected: selected)
     case let .StartTask(task):
-        return state.set(runningTask: task)
+        if task.totalTime > task.timeElapsed {
+            return state.set(runningTask: task)
+        }
+        return state
     case .StopTask:
         return state.set(runningTask: nil)
     case let .TaskUpdate(update):

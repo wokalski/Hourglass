@@ -23,19 +23,26 @@ func sideEffects(app: ViewController) -> SideEffect {
             try! app.store.realm.write {
                 app.store.realm.delete(task)
             }
-        case let .StartTask(task):
-            app.store.startTimer(every: 1, do: {
-                app.store.dispatch(action:
-                    .TaskUpdate(task:
-                        TaskUpdate(task: task)
-                            .set(timeElapsed: task.timeElapsed + 1
+        case .StartTask(_): // Running task might actually be nil - if the task was completed it cannot be started
+            if let runningTask = state.runningTask {
+                app.store.startTimer(every: 1, do: {
+                    app.store.dispatch(action:
+                        .TaskUpdate(task:
+                            TaskUpdate(task: runningTask)
+                                .set(timeElapsed: runningTask.timeElapsed + 1
+                            )
                         )
                     )
-                )
-            })
+                })
+            }
         case .StopTask:
             app.store.stopTimer()
         case .TaskUpdate:
+            if let runningTask = state.runningTask {
+                if runningTask.timeElapsed >= runningTask.totalTime {
+                    app.store.dispatch(action: .StopTask(task: runningTask))
+                }
+            }
             app.collectionView.reloadData()
         case let .Select(indexPath):
             guard let indexPath = indexPath else {
@@ -48,7 +55,7 @@ func sideEffects(app: ViewController) -> SideEffect {
     }
 }
 
-func createTask(name: String, time: TimeInterval) -> Task {
+func createTask(name: String, time: IntMax) -> Task {
     let task = Task()
     task.name = name
     task.totalTime = time

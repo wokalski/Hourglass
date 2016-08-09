@@ -11,7 +11,7 @@ enum Action {
     case Select(indexPath: IndexPath?)
 }
 
-func newTaskAction(_ name: String, totalTime: TimeInterval?) -> Action {
+func newTaskAction(_ name: String, totalTime: IntMax?) -> Action {
     if let totalTime = totalTime {
         let task = Task()
         task.name = name
