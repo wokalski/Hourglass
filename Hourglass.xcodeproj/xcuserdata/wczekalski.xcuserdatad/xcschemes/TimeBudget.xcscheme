@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C9B361211D5516E5002A013A"
-               BuildableName = "TimeBudget.app"
-               BlueprintName = "TimeBudget"
-               ReferencedContainer = "container:TimeBudget.xcodeproj">
+               BuildableName = "Hourglass.app"
+               BlueprintName = "Hourglass"
+               ReferencedContainer = "container:Hourglass.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C9B361321D5516E6002A013A"
-               BuildableName = "TimeBudgetTests.xctest"
-               BlueprintName = "TimeBudgetTests"
-               ReferencedContainer = "container:TimeBudget.xcodeproj">
+               BuildableName = "HourglassTests.xctest"
+               BlueprintName = "HourglassTests"
+               ReferencedContainer = "container:Hourglass.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C9B361211D5516E5002A013A"
-            BuildableName = "TimeBudget.app"
-            BlueprintName = "TimeBudget"
-            ReferencedContainer = "container:TimeBudget.xcodeproj">
+            BuildableName = "Hourglass.app"
+            BlueprintName = "Hourglass"
+            ReferencedContainer = "container:Hourglass.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C9B361211D5516E5002A013A"
-            BuildableName = "TimeBudget.app"
-            BlueprintName = "TimeBudget"
-            ReferencedContainer = "container:TimeBudget.xcodeproj">
+            BuildableName = "Hourglass.app"
+            BlueprintName = "Hourglass"
+            ReferencedContainer = "container:Hourglass.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -90,9 +90,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C9B361211D5516E5002A013A"
-            BuildableName = "TimeBudget.app"
-            BlueprintName = "TimeBudget"
-            ReferencedContainer = "container:TimeBudget.xcodeproj">
+            BuildableName = "Hourglass.app"
+            BlueprintName = "Hourglass"
+            ReferencedContainer = "container:Hourglass.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
