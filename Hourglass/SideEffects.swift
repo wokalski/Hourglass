@@ -23,7 +23,7 @@ func sideEffects(app: ViewController) -> SideEffect {
             try! app.store.realm.write {
                 app.store.realm.delete(task)
             }
-        case .StartTask(_): // Running task might actually be nil - if the task was completed it cannot be started
+        case .StartTask: // Running task might actually be nil - if the task was completed it cannot be started
             if let runningTask = state.runningTask {
                 app.store.startTimer(every: 1, do: {
                     app.store.dispatch(action:
@@ -35,7 +35,13 @@ func sideEffects(app: ViewController) -> SideEffect {
                     )
                 })
             }
-        case .StopTask:
+        case let .StopTask(task):
+            if task.timeElapsed == task.totalTime {
+                let notification = NSUserNotification()
+                notification.title = "Completed a task"
+                notification.subtitle = task.name
+                NSUserNotificationCenter.default.deliver(notification)
+            }
             app.store.stopTimer()
         case .TaskUpdate:
             if let runningTask = state.runningTask {
@@ -44,8 +50,8 @@ func sideEffects(app: ViewController) -> SideEffect {
                 }
             }
             app.collectionView.reloadData()
-        case let .Select(indexPath):
-            guard let indexPath = indexPath else {
+        case .Select:
+            guard let indexPath = state.selected else {
                 app.collectionView.deselectAll(nil)
                 return
             }

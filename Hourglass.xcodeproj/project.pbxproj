@@ -155,8 +155,8 @@
 		C9059C661D5A19980001ED54 /* Data source */ = {
 			isa = PBXGroup;
 			children = (
-				C96695281D5A00F800ABF907 /* Cells.swift */,
 				C96695291D5A00F800ABF907 /* DataSource.swift */,
+				C96695281D5A00F800ABF907 /* Cells.swift */,
 			);
 			name = "Data source";
 			sourceTree = "<group>";

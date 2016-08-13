@@ -60,9 +60,6 @@ class CollectionViewDelegate: NSObject, NSCollectionViewDelegateFlowLayout {
         }
         self.getDispatch()(action: .Select(indexPath: indexPath))
     }
-    func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
-        
-    }
 }
 
 func cellSize(in view: NSView) -> NSSize {

@@ -1,6 +1,4 @@
 import AppKit
-import RealmSwift
-import ReactiveCocoa.Swift
 
 enum CellType {
     case Task(task: TaskCellViewModel)
@@ -40,8 +38,8 @@ func configureReusableCellsOf(collectionView: NSCollectionView) {
     collectionView.register(task, forItemWithIdentifier: taskIdentifier)
 }
 
-func cell<T>(factory: T.Type, in collectionView: NSCollectionView, at indexPath: IndexPath) -> T {
-    let identifier = String(factory)
+func cell<T>(type: T.Type, in collectionView: NSCollectionView, at indexPath: IndexPath) -> T {
+    let identifier = String(type)
     let item = collectionView.makeItem(withIdentifier: identifier, for: indexPath)
     guard item is T else {
         fatalError()
