@@ -3,11 +3,11 @@ import Foundation
 typealias TaskIndex = [TaskID : Task]
 
 struct State {
-    let runningTask: Task?
+    let currentSession: Session?
     let tasks: TaskIndex
     let selected: IndexPath?
     
-    static let initialState = State(runningTask: nil,
+    static let initialState = State(currentSession: nil,
                                     tasks: [:],
                                     selected: nil)
 }
@@ -15,31 +15,32 @@ struct State {
 extension State {
     func set(visibleCells: [TaskID: IndexPath]) -> State {
         return State(
-            runningTask: runningTask,
+            currentSession: currentSession,
             tasks: tasks,
             selected: selected)
     }
-    func set(runningTask: Task?) -> State {
+    func set(currentSession: Session?) -> State {
         return State(
-            runningTask: runningTask,
+            currentSession: currentSession,
             tasks: tasks,
             selected: selected)
     }
     func set(tasks: [Int : Task]) -> State {
         return State(
-            runningTask: runningTask,
+            currentSession: currentSession,
             tasks: tasks,
             selected: selected)
     }
     func set(selected: IndexPath?) -> State {
         return State(
-            runningTask: runningTask,
+            currentSession: currentSession,
             tasks: tasks,
             selected: selected)
     }
 }
 
 extension State {
+    
     var selectedTask: Task? {
         get {
             guard let indexPath = selected else {

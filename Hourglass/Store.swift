@@ -12,7 +12,7 @@ class Store {
     let realm: Realm
     
     // App identity
-    lazy private(set) var state: State = State(runningTask: nil,
+    lazy private(set) var state: State = State(currentSession: nil,
                                                tasks: tasks(in: self.realm),
                                                selected: nil)
     lazy private(set) var dataSource: DataSource = DataSource(store: self)
@@ -59,7 +59,7 @@ class BlockExecutor {
 }
 
 func tasks(in realm: Realm) -> TaskIndex {
-    let results = realm.allObjects(ofType: Task.self).sorted(onProperty: "id", ascending: true)
+    let results = realm.allObjects(ofType: Task.self).sorted(onProperty: "timeElapsed", ascending: false)
     return dictionary(from: results)
 }
 
@@ -74,17 +74,25 @@ extension DataSource {
         let tasks = Array(state.tasks.values)
         let viewModels = tasks.map { task -> TaskCellViewModel in
             let selected = store.state.selectedTask?.id == task.id
-            let running = task.id == state.runningTask?.id
+            
+            
+            let running = task.id == state.currentSession?.task?.id
             return TaskCellViewModel(task: task,
                                      selected: selected,
                                      onClick: { [weak store] in
-                                        if running {
-                                            store?.dispatch(action: .StopTask(task: task))
-                                        } else {
-                                            store?.dispatch(action: .StartTask(task: task))
-                                        }
+                                        store?.dispatch(action: .SessionUpdate(action: handler(task: task, state: state)))
                 }, running: running)
         }
         self.init(viewModels: viewModels, dispatch: store.dispatch)
+    }
+}
+
+func handler(task: Task, state: State) -> WorkSessionAction {
+    if let session = state.currentSession,
+       let runningTask = session.task,
+       runningTask.id == task.id {
+        return .terminate(session: session)
+    } else {
+        return .start(task: task)
     }
 }

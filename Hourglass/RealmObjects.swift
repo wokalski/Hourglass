@@ -14,6 +14,11 @@ class Task: Object {
     }
 }
 
+class Session: Object {
+    dynamic var task: Task?
+    dynamic var startTime: IntMax = 0
+}
+
 protocol TaskProtocol {
     var id: TaskID { get }
     var timeElapsed: IntMax { get }

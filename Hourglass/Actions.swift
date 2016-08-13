@@ -5,10 +5,14 @@ import AppKit
 enum Action {
     case NewTask(task: Task?)
     case RemoveTask(task: Task)
-    case StartTask(task: Task)
-    case StopTask(task: Task)
     case TaskUpdate(task: TaskProtocol)
+    case SessionUpdate(action: WorkSessionAction)
     case Select(indexPath: IndexPath?)
+}
+
+enum WorkSessionAction {
+    case start(task: Task)
+    case terminate(session: Session)
 }
 
 func newTaskAction(_ name: String, totalTime: IntMax?) -> Action {

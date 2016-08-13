@@ -8,21 +8,16 @@ func applicationReducer(state: State, action: Action) -> State {
             )
         }
         return state
-    case let .RemoveTask(task):
+    case .RemoveTask(let task):
         let removingSelected = task.id == state.selectedTask?.id
         let selected = removingSelected ? nil : state.selected
-        let removingRunning = state.runningTask?.id == task.id
-        let running = removingRunning ? nil : state.runningTask
-        return State(runningTask: running,
+        let removingRunning = state.currentSession?.task?.id == task.id
+        let session = removingRunning ? nil : state.currentSession
+        return State(currentSession: session,
                      tasks: state.tasks.deleting(task.id),
                      selected: selected)
-    case let .StartTask(task):
-        if task.totalTime > task.timeElapsed {
-            return state.set(runningTask: task)
-        }
-        return state
-    case .StopTask:
-        return state.set(runningTask: nil)
+    case .SessionUpdate(let action):
+        return workSessionReducer(state: state, action: action)
     case let .TaskUpdate(update):
         let task = state.tasks[update.id]
         if let task = task {
@@ -35,7 +30,7 @@ func applicationReducer(state: State, action: Action) -> State {
         } else {
             return state
         }
-    case let .Select(indexPath):
+    case .Select(let indexPath):
         guard let indexPath = indexPath else {
             return state.set(selected: nil)
         }
@@ -45,3 +40,21 @@ func applicationReducer(state: State, action: Action) -> State {
         return state.set(selected: indexPath)
     }
 }
+
+func workSessionReducer(state: State, action: WorkSessionAction) -> State {
+    switch action {
+    case .start(let task):
+        if task.totalTime > task.timeElapsed {
+            let session = Session()
+            session.task = task
+            session.startTime = task.timeElapsed
+            return state.set(currentSession: session)
+        }
+        return state
+
+    case .terminate:
+        return state.set(currentSession: nil)
+    }
+}
+
+

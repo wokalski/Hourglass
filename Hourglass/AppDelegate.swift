@@ -19,9 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentViewController = storyboard.instantiateInitialController() as! ViewController
         return popover
     }()
-    lazy var quitItem: NSMenuItem = {
-        return NSMenuItem()
-    }()
     lazy var menu: NSMenu = {
         let menu = NSMenu(title: "")
         let item = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
