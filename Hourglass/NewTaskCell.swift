@@ -1,6 +1,6 @@
 import AppKit
 
-typealias NewTaskAction = (name: String, time: IntMax?) -> Void
+typealias NewTaskAction = (name: String, time: HGDuration?) -> Void
 
 class NewTaskCell: NSCollectionViewItem {
     
@@ -15,7 +15,7 @@ class NewTaskCell: NSCollectionViewItem {
     }
 }
 
-func timeInterval(from string: String) -> IntMax? {
+func timeInterval(from string: String) -> HGDuration? {
     
     let parts = string.components(separatedBy: ":")
     
@@ -26,12 +26,12 @@ func timeInterval(from string: String) -> IntMax? {
     return parts
         .reversed()
         .enumerated()
-        .reduce(IntMax(0)) {
-            (result, enumeration) -> IntMax? in
+        .reduce(HGDuration(0)) {
+            (result, enumeration) -> HGDuration? in
             guard let part = Double(enumeration.element), let result = result else {
                 return nil
             }
             let intIndex = enumeration.offset
-            return result + IntMax(part * pow(Double(60), Double(intIndex + 1)))
+            return result + HGDuration(part * pow(Double(60), Double(intIndex + 1)))
     }
 }

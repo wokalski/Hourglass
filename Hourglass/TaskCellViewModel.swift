@@ -12,7 +12,20 @@ struct TaskCellViewModel {
 }
 
 extension TaskCellViewModel {
+    
     init(task: Task,
+         store: Store) {
+        let state = store.state
+        let selected = state.selectedTask?.id == task.id
+        let running = task.id == state.currentSession?.task.id
+        self.init(task: task,
+                  selected: selected,
+                  onClick: { [weak store] in
+                    store?.dispatch(action: .SessionUpdate(action: handler(task: task, state: state)))
+            }, running: running)
+    }
+
+    private init(task: Task,
          selected: Bool = false,
          onClick: () -> Void,
          running: Bool) {
@@ -44,7 +57,16 @@ private func backgroundForState(selected: Bool) -> CGColor {
     return selected ? blue : clear
 }
 
-extension IntMax {
+func handler(task: Task, state: State) -> WorkSessionAction {
+    if let session = state.currentSession,
+        session.task.id == task.id {
+        return .terminate(session: session)
+    } else {
+        return .start(task: task)
+    }
+}
+
+extension HGDuration {
     func timeString() -> String {
         let interval = self
         let seconds = interval % 60

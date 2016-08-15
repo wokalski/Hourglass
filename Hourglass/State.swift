@@ -14,6 +14,11 @@ struct State {
     let tasks: TaskIndex
     let selected: IndexPath?
     let logTarget: EventLogTarget?
+    
+    static let initialState = State(currentSession: nil,
+                                   tasks: [:],
+                                   selected: nil,
+                                   logTarget: nil)
 }
 
 extension State {

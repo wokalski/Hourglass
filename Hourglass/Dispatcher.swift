@@ -1,6 +1,7 @@
 typealias SideEffect = (state: State, action: Action) -> Void
 typealias Dispatch = (action: Action) -> Void
-typealias Dispatcher = (state: State) -> Dispatch
+typealias StateGetter = () -> State
+typealias Dispatcher = (state: StateGetter) -> Dispatch
 typealias Reducer = (State, Action) -> State
 typealias HODispatcher = (
     reducer: Reducer,
@@ -12,7 +13,7 @@ func dispatcher(
     Dispatcher {
     return { state in
         return { action in
-            storeChanged(state: reducer(state, action), action: action)
+            storeChanged(state: reducer(state(), action), action: action)
         }
     }
 }

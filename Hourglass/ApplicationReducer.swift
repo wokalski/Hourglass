@@ -43,6 +43,8 @@ func applicationReducer(state: State, action: Action) -> State {
         return calendarReducer(state: state, action: action)
     case .Quit:
         return state
+    case .Init:
+        return state
     }
 }
 
@@ -64,6 +66,8 @@ func calendarReducer(state: State, action: CalendarAction) -> State {
     switch action {
     case .chooseDefault(let calendar):
         return state.set(logTarget: calendar)
+    case .logTask, .initDefault:
+        return state
     }
 }
 

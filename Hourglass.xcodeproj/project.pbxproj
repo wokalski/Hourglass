@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C90AE7FF1D5A012700AF2CB9 /* HourglassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96695391D5A00F800ABF907 /* HourglassTests.swift */; };
+		C90F9C481D61DCA300717C67 /* CalendarSideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F9C471D61DCA300717C67 /* CalendarSideEffects.swift */; };
+		C90F9C4A1D61E46300717C67 /* WorkSessionSideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F9C491D61E46300717C67 /* WorkSessionSideEffects.swift */; };
+		C90F9C4C1D61E6F900717C67 /* EKCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F9C4B1D61E6F900717C67 /* EKCalendarExtension.swift */; };
 		C922EEE81D57A8B6008EF1A7 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94EEA431D56009C00649120 /* Realm.framework */; };
 		C922EEE91D57A8B6008EF1A7 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94EEA441D56009C00649120 /* RealmSwift.framework */; };
 		C94EEA451D56009C00649120 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94EEA431D56009C00649120 /* Realm.framework */; };
@@ -79,6 +82,9 @@
 
 /* Begin PBXFileReference section */
 		C90AE8001D5A01B600AF2CB9 /* Hourglass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Hourglass.entitlements; path = Hourglass/Hourglass.entitlements; sourceTree = "<group>"; };
+		C90F9C471D61DCA300717C67 /* CalendarSideEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSideEffects.swift; sourceTree = "<group>"; };
+		C90F9C491D61E46300717C67 /* WorkSessionSideEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkSessionSideEffects.swift; sourceTree = "<group>"; };
+		C90F9C4B1D61E6F900717C67 /* EKCalendarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKCalendarExtension.swift; sourceTree = "<group>"; };
 		C94EEA431D56009C00649120 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/Mac/Realm.framework; sourceTree = "<group>"; };
 		C94EEA441D56009C00649120 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/Mac/RealmSwift.framework; sourceTree = "<group>"; };
 		C94EEA4B1D5600C700649120 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/Mac/Realm.framework.dSYM; sourceTree = "<group>"; };
@@ -149,7 +155,7 @@
 			children = (
 				C96695231D5A00F800ABF907 /* Actions.swift */,
 				C96695261D5A00F800ABF907 /* ApplicationReducer.swift */,
-				C96695301D5A00F800ABF907 /* SideEffects.swift */,
+				C90F9C461D61DC8C00717C67 /* Side Effects */,
 				C96695311D5A00F800ABF907 /* State.swift */,
 				C96695321D5A00F800ABF907 /* Store.swift */,
 			);
@@ -169,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				C966952A1D5A00F800ABF907 /* DictionaryExtensions.swift */,
+				C90F9C4B1D61E6F900717C67 /* EKCalendarExtension.swift */,
 				C966952B1D5A00F800ABF907 /* Dispatcher.swift */,
 			);
 			name = "generic utilities";
@@ -181,6 +188,16 @@
 				C966952E1D5A00F800ABF907 /* NewTaskCell.swift */,
 			);
 			name = "New Task";
+			sourceTree = "<group>";
+		};
+		C90F9C461D61DC8C00717C67 /* Side Effects */ = {
+			isa = PBXGroup;
+			children = (
+				C96695301D5A00F800ABF907 /* SideEffects.swift */,
+				C90F9C471D61DCA300717C67 /* CalendarSideEffects.swift */,
+				C90F9C491D61E46300717C67 /* WorkSessionSideEffects.swift */,
+			);
+			name = "Side Effects";
 			sourceTree = "<group>";
 		};
 		C96695221D5A00F800ABF907 /* Source */ = {
@@ -373,6 +390,8 @@
 				C96695471D5A00F800ABF907 /* RealmObjects.swift in Sources */,
 				C966953E1D5A00F800ABF907 /* ApplicationReducer.swift in Sources */,
 				C96695461D5A00F800ABF907 /* NewTaskCell.swift in Sources */,
+				C90F9C4A1D61E46300717C67 /* WorkSessionSideEffects.swift in Sources */,
+				C90F9C4C1D61E6F900717C67 /* EKCalendarExtension.swift in Sources */,
 				C966954A1D5A00F800ABF907 /* Store.swift in Sources */,
 				C96695491D5A00F800ABF907 /* State.swift in Sources */,
 				C96695401D5A00F800ABF907 /* Cells.swift in Sources */,
@@ -380,6 +399,7 @@
 				C966954D1D5A00F800ABF907 /* TaskCellViewModel.swift in Sources */,
 				C96695481D5A00F800ABF907 /* SideEffects.swift in Sources */,
 				C96695411D5A00F800ABF907 /* DataSource.swift in Sources */,
+				C90F9C481D61DCA300717C67 /* CalendarSideEffects.swift in Sources */,
 				C96695431D5A00F800ABF907 /* Dispatcher.swift in Sources */,
 				C966953B1D5A00F800ABF907 /* Actions.swift in Sources */,
 				C966954C1D5A00F800ABF907 /* TaskCell.swift in Sources */,

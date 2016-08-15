@@ -14,7 +14,8 @@ class ViewController: NSViewController {
 
     @IBOutlet var collectionView: NSCollectionView?
     
-    lazy var store: Store = Store(realm: try! Realm(), sideEffect: sideEffects(app: self))
+    let realm = try! Realm()
+    lazy var store: Store = Store(sideEffect: sideEffects(app: self))
     lazy var delegate: CollectionViewDelegate = CollectionViewDelegate(getDispatch: { [weak self] () -> Dispatch in
         guard let existingSelf = self else {
             return { _ in }

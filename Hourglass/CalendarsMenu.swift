@@ -39,9 +39,13 @@ func allCalendars(store: Store) -> [NSMenuItem] {
     let resetItem = resetSelectedCalendarItem(store: store)
     let eventStore = EKEventStore()
     let calendars = eventStore.calendars(for: .event)
-    let calendarItems = calendars.map {
-        return item(from: $0, eventStore, store)
-    }
+    let calendarItems = calendars
+        .filter {
+            return $0.mutable
+        }
+        .map {
+            return item(from: $0, eventStore, store)
+        }
     let separator = NSMenuItem.separator()
     return [resetItem, separator] + calendarItems
 }

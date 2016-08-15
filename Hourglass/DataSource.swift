@@ -50,3 +50,13 @@ class DataSource: NSObject, NSCollectionViewDataSource {
         return initiatedCell
     }
 }
+
+func newTaskAction(_ name: String, totalTime: HGDuration?) -> Action {
+    if let totalTime = totalTime {
+        let task = Task()
+        task.name = name
+        task.totalTime = totalTime
+        return .NewTask(task: task)
+    }
+    return .NewTask(task: nil)
+}

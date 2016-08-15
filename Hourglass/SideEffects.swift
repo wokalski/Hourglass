@@ -10,7 +10,8 @@ func sideEffects(app: ViewController) -> SideEffect {
         }
         
         app.collectionView?.dataSource = app.store.dataSource
-        let realm = app.store.realm
+        let realm = app.realm
+        let dispatch = app.store.dispatch
         
         switch action {
         case let .NewTask(task):
@@ -18,9 +19,13 @@ func sideEffects(app: ViewController) -> SideEffect {
                 NSBeep()
                 return
             }
-            try! realm.write {
-                realm.add(task)
+            
+            if task.realm == nil {
+                try! realm.write {
+                    realm.add(task)
+                }
             }
+            
             app.collectionView?.reloadData()
         case let .RemoveTask(task):
             if state.currentSession == nil {
@@ -29,8 +34,6 @@ func sideEffects(app: ViewController) -> SideEffect {
             try! realm.write {
                 realm.delete(task)
             }
-        case .SessionUpdate(let sessionAction):
-            workSessionUpdate(app: app, state: state, action: sessionAction)
         case .TaskUpdate:
             guard let session = state.currentSession else {
                     return
@@ -39,7 +42,7 @@ func sideEffects(app: ViewController) -> SideEffect {
             let task = session.task
             
             if task.timeElapsed >= task.totalTime {
-                app.store.dispatch(action: .SessionUpdate(action: .terminate(session: session)))
+                dispatch(action: .SessionUpdate(action: .terminate(session: session)))
             }
             app.collectionView?.reloadData()
         case .Select:
@@ -48,68 +51,30 @@ func sideEffects(app: ViewController) -> SideEffect {
                 return
             }
             app.collectionView?.reloadItems(at: Set([indexPath]))
-            break
-        case .Calendar:
-            break
         case .Quit:
             if let session = state.currentSession {
-                app.store.dispatch(action: .SessionUpdate(action: .terminate(session: session)))
+                dispatch(action: .SessionUpdate(action: .terminate(session: session)))
             }
+        case .Init:
+            let newTaskActions: [Action] = realm.allObjects(ofType: Task.self)
+                .sorted(onProperty: "timeElapsed", ascending: false)
+                .map { task in
+                    .NewTask(task: task)
+            }
+            newTaskActions.forEach { action in
+                dispatch(action: action)
+            }
+            
+            dispatch(action: .Calendar(action: .initDefault))
+        case let .Calendar(action):
+            handleCalendarAction(dispatch, state, action)
+        case .SessionUpdate(let sessionAction):
+            workSessionUpdate(app: app, state: state, action: sessionAction)
         }
     }
 }
 
-func workSessionUpdate(
-    app: ViewController,
-    state: State,
-    action: WorkSessionAction) {
-        
-    switch action {
-    case .start:
-        guard let session = state.currentSession else {
-                return
-        }
-        
-        app.store.startTimer(every: 1, do: {
-            app.store.dispatch(action:
-                .TaskUpdate(task:
-                    TaskUpdate(task: session.task)
-                        .set(timeElapsed: session.task.timeElapsed + 1
-                    )
-                )
-            )
-        })
-    case .terminate(let session):
-        app.store.stopTimer()
-        let task = session.task
-        
-        if task.timeElapsed == task.totalTime {
-            let notification = NSUserNotification()
-            notification.title = "Completed a task"
-            notification.subtitle = task.name
-            NSUserNotificationCenter.default.deliver(notification)
-        }
-        
-        guard let logTarget = state.logTarget else {
-            return
-        }
-        
-        let event = EKEvent(eventStore: logTarget.eventStore)
-        let now = Date()
-        event.title = task.name
-        event.endDate = now
-        event.startDate = now.addingTimeInterval(-(Double(IntMax.subtractWithOverflow(task.timeElapsed, session.startTime).0)))
-        event.calendar = logTarget.calendar
-        do {
-            try logTarget.eventStore.save(event, span: .thisEvent, commit: true)
-        } catch {
-            print("Added event from another event store")
-            fatalError()
-        }
-    }
-}
-
-func createTask(name: String, time: IntMax) -> Task {
+func createTask(name: String, time: HGDuration) -> Task {
     let task = Task()
     task.name = name
     task.totalTime = time

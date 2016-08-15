@@ -42,6 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.action = #selector(togglePopover(sender:))
         statusItem.sendAction(on: [.leftMouseUp, .rightMouseUp])
         super.init()
+        self.viewController.store.dispatch(action: .Init)
     }
     
     func togglePopover(sender: AnyObject?) {

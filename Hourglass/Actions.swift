@@ -3,6 +3,8 @@ import RealmSwift
 import AppKit
 import EventKit
 
+typealias HGDuration = IntMax
+
 enum Action {
     case NewTask(task: Task?)
     case RemoveTask(task: Task)
@@ -10,6 +12,7 @@ enum Action {
     case SessionUpdate(action: WorkSessionAction)
     case Calendar(action: CalendarAction)
     case Select(indexPath: IndexPath?)
+    case Init
     case Quit
 }
 
@@ -19,15 +22,12 @@ enum WorkSessionAction {
 }
 
 enum CalendarAction {
+    case initDefault
     case chooseDefault(logTarget: EventLogTarget?)
+    case logTask(task: Task, startTime: HGDuration)
 }
 
-func newTaskAction(_ name: String, totalTime: IntMax?) -> Action {
-    if let totalTime = totalTime {
-        let task = Task()
-        task.name = name
-        task.totalTime = totalTime
-        return .NewTask(task: task)
-    }
-    return .NewTask(task: nil)
+enum LifeCycleAction {
+    case Init
+    case Quit
 }
