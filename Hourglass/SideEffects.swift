@@ -4,8 +4,12 @@ import AppKit
 import EventKit
 
 func sideEffects(app: ViewController) -> SideEffect {
-    return { state, action in
-        app.collectionView.dataSource = app.store.dataSource
+    return { [weak app] state, action in
+        guard let app = app else {
+            return
+        }
+        
+        app.collectionView?.dataSource = app.store.dataSource
         let realm = app.store.realm
         
         switch action {
@@ -17,7 +21,7 @@ func sideEffects(app: ViewController) -> SideEffect {
             try! realm.write {
                 realm.add(task)
             }
-            app.collectionView.reloadData()
+            app.collectionView?.reloadData()
         case let .RemoveTask(task):
             if state.currentSession == nil {
                 app.store.stopTimer()
@@ -28,22 +32,29 @@ func sideEffects(app: ViewController) -> SideEffect {
         case .SessionUpdate(let sessionAction):
             workSessionUpdate(app: app, state: state, action: sessionAction)
         case .TaskUpdate:
-            guard let session = state.currentSession,
-                  let runningTask = session.task else {
+            guard let session = state.currentSession else {
                     return
             }
             
-            if runningTask.timeElapsed >= runningTask.totalTime {
+            let task = session.task
+            
+            if task.timeElapsed >= task.totalTime {
                 app.store.dispatch(action: .SessionUpdate(action: .terminate(session: session)))
             }
-            app.collectionView.reloadData()
+            app.collectionView?.reloadData()
         case .Select:
             guard let indexPath = state.selected else {
-                app.collectionView.deselectAll(nil)
+                app.collectionView?.deselectAll(nil)
                 return
             }
-            app.collectionView.reloadItems(at: Set([indexPath]))
+            app.collectionView?.reloadItems(at: Set([indexPath]))
             break
+        case .Calendar:
+            break
+        case .Quit:
+            if let session = state.currentSession {
+                app.store.dispatch(action: .SessionUpdate(action: .terminate(session: session)))
+            }
         }
     }
 }
@@ -52,39 +63,25 @@ func workSessionUpdate(
     app: ViewController,
     state: State,
     action: WorkSessionAction) {
-    
-    let realm = app.store.realm
-    
+        
     switch action {
     case .start:
-        guard let session = state.currentSession,
-            let runningTask = session.task else {
+        guard let session = state.currentSession else {
                 return
-        }
-        
-        try! realm.write {
-            realm.add(session)
         }
         
         app.store.startTimer(every: 1, do: {
             app.store.dispatch(action:
                 .TaskUpdate(task:
-                    TaskUpdate(task: runningTask)
-                        .set(timeElapsed: runningTask.timeElapsed + 1
+                    TaskUpdate(task: session.task)
+                        .set(timeElapsed: session.task.timeElapsed + 1
                     )
                 )
             )
         })
     case .terminate(let session):
         app.store.stopTimer()
-        
-        guard let task = session.task else {
-            return
-        }
-        
-        try! realm.write {
-            realm.delete(session)
-        }
+        let task = session.task
         
         if task.timeElapsed == task.totalTime {
             let notification = NSUserNotification()
@@ -93,12 +90,23 @@ func workSessionUpdate(
             NSUserNotificationCenter.default.deliver(notification)
         }
         
-        addEvent(startTime: session.startTime, task: task)
+        guard let logTarget = state.logTarget else {
+            return
+        }
+        
+        let event = EKEvent(eventStore: logTarget.eventStore)
+        let now = Date()
+        event.title = task.name
+        event.endDate = now
+        event.startDate = now.addingTimeInterval(-(Double(IntMax.subtractWithOverflow(task.timeElapsed, session.startTime).0)))
+        event.calendar = logTarget.calendar
+        do {
+            try logTarget.eventStore.save(event, span: .thisEvent, commit: true)
+        } catch {
+            print("Added event from another event store")
+            fatalError()
+        }
     }
-}
-
-func addEvent(startTime: IntMax, task: Task) {
-    // TODO: Implement
 }
 
 func createTask(name: String, time: IntMax) -> Task {

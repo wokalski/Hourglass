@@ -11,11 +11,12 @@ func applicationReducer(state: State, action: Action) -> State {
     case .RemoveTask(let task):
         let removingSelected = task.id == state.selectedTask?.id
         let selected = removingSelected ? nil : state.selected
-        let removingRunning = state.currentSession?.task?.id == task.id
+        let removingRunning = state.currentSession?.task.id == task.id
         let session = removingRunning ? nil : state.currentSession
         return State(currentSession: session,
                      tasks: state.tasks.deleting(task.id),
-                     selected: selected)
+                     selected: selected,
+                     logTarget: state.logTarget)
     case .SessionUpdate(let action):
         return workSessionReducer(state: state, action: action)
     case let .TaskUpdate(update):
@@ -38,6 +39,10 @@ func applicationReducer(state: State, action: Action) -> State {
             return state.set(selected: nil)
         }
         return state.set(selected: indexPath)
+    case .Calendar(let action):
+        return calendarReducer(state: state, action: action)
+    case .Quit:
+        return state
     }
 }
 
@@ -45,9 +50,7 @@ func workSessionReducer(state: State, action: WorkSessionAction) -> State {
     switch action {
     case .start(let task):
         if task.totalTime > task.timeElapsed {
-            let session = Session()
-            session.task = task
-            session.startTime = task.timeElapsed
+            let session = Session(task: task, startTime: task.timeElapsed)
             return state.set(currentSession: session)
         }
         return state
@@ -57,4 +60,10 @@ func workSessionReducer(state: State, action: WorkSessionAction) -> State {
     }
 }
 
+func calendarReducer(state: State, action: CalendarAction) -> State {
+    switch action {
+    case .chooseDefault(let calendar):
+        return state.set(logTarget: calendar)
+    }
+}
 

@@ -36,6 +36,8 @@
 		C966954D1D5A00F800ABF907 /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96695351D5A00F800ABF907 /* TaskCellViewModel.swift */; };
 		C966954E1D5A00F800ABF907 /* TasksController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96695361D5A00F800ABF907 /* TasksController.storyboard */; };
 		C966954F1D5A00F800ABF907 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96695371D5A00F800ABF907 /* ViewController.swift */; };
+		C9F5BB331D6090DE00109C85 /* CalendarsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5BB321D6090DE00109C85 /* CalendarsMenu.swift */; };
+		C9F5BB361D60E5D300109C85 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5BB351D60E5D300109C85 /* MenuItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		C966953A1D5A00F800ABF907 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9B361221D5516E5002A013A /* Hourglass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hourglass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B361331D5516E6002A013A /* HourglassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HourglassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9F5BB321D6090DE00109C85 /* CalendarsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarsMenu.swift; sourceTree = "<group>"; };
+		C9F5BB351D60E5D300109C85 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				C96695241D5A00F800ABF907 /* AppDelegate.swift */,
+				C9F5BB341D60E5B900109C85 /* Menu */,
 				C96695371D5A00F800ABF907 /* ViewController.swift */,
 				C96695361D5A00F800ABF907 /* TasksController.storyboard */,
 				C966952F1D5A00F800ABF907 /* RealmObjects.swift */,
@@ -237,6 +242,15 @@
 				C9B361331D5516E6002A013A /* HourglassTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C9F5BB341D60E5B900109C85 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C9F5BB321D6090DE00109C85 /* CalendarsMenu.swift */,
+				C9F5BB351D60E5D300109C85 /* MenuItem.swift */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +367,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F5BB361D60E5D300109C85 /* MenuItem.swift in Sources */,
+				C9F5BB331D6090DE00109C85 /* CalendarsMenu.swift in Sources */,
 				C966954F1D5A00F800ABF907 /* ViewController.swift in Sources */,
 				C96695471D5A00F800ABF907 /* RealmObjects.swift in Sources */,
 				C966953E1D5A00F800ABF907 /* ApplicationReducer.swift in Sources */,

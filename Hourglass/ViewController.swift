@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 class ViewController: NSViewController {
 
-    @IBOutlet var collectionView: NSCollectionView!
+    @IBOutlet var collectionView: NSCollectionView?
     
     lazy var store: Store = Store(realm: try! Realm(), sideEffect: sideEffects(app: self))
     lazy var delegate: CollectionViewDelegate = CollectionViewDelegate(getDispatch: { [weak self] () -> Dispatch in
@@ -24,6 +24,7 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let collectionView = self.collectionView!
         collectionView.isSelectable = true
         collectionView.delegate = delegate
         collectionView.dataSource = store.dataSource

@@ -7,24 +7,32 @@
 //
 
 import Cocoa
+import EventKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem: NSStatusItem
+    let viewController: ViewController = {
+        let bundle = Bundle(for: ViewController.self)
+        let storyboard = NSStoryboard(name: "TasksController", bundle: bundle)
+        return storyboard.instantiateInitialController() as! ViewController
+    }()
     lazy var popover: NSPopover = {
         let popover = NSPopover()
         let bundle = Bundle(for: ViewController.self)
         let storyboard = NSStoryboard(name: "TasksController", bundle: bundle)
-        popover.contentViewController = storyboard.instantiateInitialController() as! ViewController
+        popover.contentViewController = self.viewController
         return popover
     }()
-    lazy var menu: NSMenu = {
+    
+    var menu: NSMenu {
         let menu = NSMenu(title: "")
         let item = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
         menu.addItem(item)
+        menu.addItem(calendarsItem(store: viewController.store))
         return menu
-    }()
+    }
     var monitor: AnyObject?
     
     override init() {

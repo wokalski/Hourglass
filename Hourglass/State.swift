@@ -1,15 +1,19 @@
 import Foundation
+import EventKit
 
 typealias TaskIndex = [TaskID : Task]
+
+struct EventLogTarget {
+    let calendar: EKCalendar
+    let eventStore: EKEventStore
+}
+
 
 struct State {
     let currentSession: Session?
     let tasks: TaskIndex
     let selected: IndexPath?
-    
-    static let initialState = State(currentSession: nil,
-                                    tasks: [:],
-                                    selected: nil)
+    let logTarget: EventLogTarget?
 }
 
 extension State {
@@ -17,25 +21,36 @@ extension State {
         return State(
             currentSession: currentSession,
             tasks: tasks,
-            selected: selected)
+            selected: selected,
+            logTarget: logTarget)
     }
     func set(currentSession: Session?) -> State {
         return State(
             currentSession: currentSession,
             tasks: tasks,
-            selected: selected)
+            selected: selected,
+            logTarget: logTarget)
     }
     func set(tasks: [Int : Task]) -> State {
         return State(
             currentSession: currentSession,
             tasks: tasks,
-            selected: selected)
+            selected: selected,
+            logTarget: logTarget)
     }
     func set(selected: IndexPath?) -> State {
         return State(
             currentSession: currentSession,
             tasks: tasks,
-            selected: selected)
+            selected: selected,
+            logTarget: logTarget)
+    }
+    func set(logTarget: EventLogTarget?) -> State {
+        return State(
+            currentSession: currentSession,
+            tasks: tasks,
+            selected: selected,
+            logTarget: logTarget)
     }
 }
 

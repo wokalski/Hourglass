@@ -14,9 +14,9 @@ class Task: Object {
     }
 }
 
-class Session: Object {
-    dynamic var task: Task?
-    dynamic var startTime: IntMax = 0
+struct Session {
+    let task: Task
+    let startTime: IntMax
 }
 
 protocol TaskProtocol {

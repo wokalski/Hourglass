@@ -14,7 +14,8 @@ class Store {
     // App identity
     lazy private(set) var state: State = State(currentSession: nil,
                                                tasks: tasks(in: self.realm),
-                                               selected: nil)
+                                               selected: nil,
+                                               logTarget: nil)
     lazy private(set) var dataSource: DataSource = DataSource(store: self)
     
     private var timer: Timer?
@@ -47,7 +48,6 @@ class Store {
 }
 
 class BlockExecutor {
-    
     init(block: () -> Void) {
         self.block = block
     }
@@ -76,7 +76,7 @@ extension DataSource {
             let selected = store.state.selectedTask?.id == task.id
             
             
-            let running = task.id == state.currentSession?.task?.id
+            let running = task.id == state.currentSession?.task.id
             return TaskCellViewModel(task: task,
                                      selected: selected,
                                      onClick: { [weak store] in
@@ -89,8 +89,7 @@ extension DataSource {
 
 func handler(task: Task, state: State) -> WorkSessionAction {
     if let session = state.currentSession,
-       let runningTask = session.task,
-       runningTask.id == task.id {
+       session.task.id == task.id {
         return .terminate(session: session)
     } else {
         return .start(task: task)
