@@ -7,7 +7,7 @@ class Task: Object {
     dynamic var timeElapsed: HGDuration = 0
     dynamic var totalTime: HGDuration = 0
     dynamic var name = ""
-    dynamic var id: TaskID = Int(NSDate.timeIntervalSinceReferenceDate)
+    dynamic var id: TaskID = Int(Date.timeIntervalSinceReferenceDate)
     
     func primaryKey() -> String? {
         return "id"
@@ -50,7 +50,7 @@ extension TaskUpdate {
         self.name = task.name
     }
     
-    func set(timeElapsed: HGDuration) -> TaskUpdate {
+    func set(_ timeElapsed: HGDuration) -> TaskUpdate {
         return TaskUpdate(id: id,
                           timeElapsed: timeElapsed,
                           totalTime: totalTime,

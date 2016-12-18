@@ -2,7 +2,7 @@ import AppKit
 
 class MenuItem: NSMenuItem     {
     typealias Action = (() -> Void)?
-    private let actionClosure: Action
+    let actionClosure: Action
     
     init(title: String, keyEquivalent: String, actionClosure closure: Action) {
         self.actionClosure = closure

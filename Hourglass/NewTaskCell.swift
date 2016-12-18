@@ -1,15 +1,15 @@
 import AppKit
 
-typealias NewTaskAction = (name: String, time: HGDuration?) -> Void
+typealias NewTaskAction = (String, HGDuration?) -> Void
 
 class NewTaskCell: NSCollectionViewItem {
     
-    @IBOutlet private var taskNameLabel: NSTextField!
-    @IBOutlet private var timeLabel: NSTextField!
+    @IBOutlet fileprivate var taskNameLabel: NSTextField!
+    @IBOutlet fileprivate var timeLabel: NSTextField!
     var onReturn: NewTaskAction = {_,_ in  }
     
     @IBAction func add(_ sender: NSTextField) {
-        onReturn(name: taskNameLabel.stringValue, time: timeInterval(from: timeLabel.stringValue))
+        onReturn(taskNameLabel.stringValue, timeInterval(from: timeLabel.stringValue))
         taskNameLabel.stringValue = ""
         timeLabel.stringValue = ""
     }

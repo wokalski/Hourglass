@@ -1,18 +1,16 @@
 import AppKit
 import RealmSwift
-import ReactiveCocoa
-import Result
 
 class DataSource: NSObject, NSCollectionViewDataSource {
     
     init(viewModels: [TaskCellViewModel],
-         dispatch: (action: Action) -> Void) {
+         dispatch: @escaping (Action) -> Void) {
         self.viewModels = viewModels
         self.dispatch = dispatch
         super.init()
     }
     
-    let dispatch: (action: Action) -> Void
+    let dispatch: (Action) -> Void
     let viewModels: [TaskCellViewModel]
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
@@ -33,10 +31,10 @@ class DataSource: NSObject, NSCollectionViewDataSource {
     func cellType(at indexPath: IndexPath) -> CellType {
         switch indexPath.section {
         case 0:
-            return .Task(task: viewModels[indexPath.item])
+            return .task(task: viewModels[indexPath.item])
         case 1:
-            return .NewTask(action: { [weak self] (name, time) in
-                self?.dispatch(action: newTaskAction(name, totalTime: time))
+            return .newTask(action: { [weak self] (name, time) in
+                self?.dispatch(newTaskAction(name, totalTime: time))
             })
         default:
             fatalError()
@@ -45,8 +43,8 @@ class DataSource: NSObject, NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let cellType = self.cellType(at: indexPath)
-        let initiatedCell = cell(type: cellType.cellClass(), in: collectionView, at: indexPath)
-        cellType.configureCell(cell: initiatedCell)
+        let initiatedCell = cell(cellType.cellClass(), in: collectionView, at: indexPath)
+        cellType.configureCell(initiatedCell)
         return initiatedCell
     }
 }
@@ -56,7 +54,7 @@ func newTaskAction(_ name: String, totalTime: HGDuration?) -> Action {
         let task = Task()
         task.name = name
         task.totalTime = totalTime
-        return .NewTask(task: task)
+        return .newTask(task: task)
     }
-    return .NewTask(task: nil)
+    return .newTask(task: nil)
 }

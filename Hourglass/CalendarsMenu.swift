@@ -1,7 +1,7 @@
 import AppKit
 import EventKit
 
-func calendarsItem(store: Store) -> NSMenuItem {
+func calendarsItem(_ store: Store) -> NSMenuItem {
     let item = NSMenuItem(title: "Record work", action: nil, keyEquivalent: "")
     let submenu = NSMenu()
     calendarsMenuItems(for: calendarAuthorizationStatus(), store)
@@ -19,7 +19,7 @@ func calendarsMenuItems(for status: EKAuthorizationStatus, _ store: Store) -> [N
     case .restricted, .denied:
         return [requestPermissionInSettings()]
     case .authorized:
-        return allCalendars(store: store)
+        return allCalendars(store)
     case .notDetermined:
         return [requestPermissionItem()]
     }
@@ -35,8 +35,8 @@ func requestPermissionInSettings() -> MenuItem {
     return MenuItem(title: "Enable in Settings -> Privacy -> Calendar", keyEquivalent: "", actionClosure: nil)
 }
 
-func allCalendars(store: Store) -> [NSMenuItem] {
-    let resetItem = resetSelectedCalendarItem(store: store)
+func allCalendars(_ store: Store) -> [NSMenuItem] {
+    let resetItem = resetSelectedCalendarItem(store)
     let eventStore = EKEventStore()
     let calendars = eventStore.calendars(for: .event)
     let calendarItems = calendars
@@ -50,9 +50,9 @@ func allCalendars(store: Store) -> [NSMenuItem] {
     return [resetItem, separator] + calendarItems
 }
 
-func resetSelectedCalendarItem(store: Store) -> NSMenuItem {
+func resetSelectedCalendarItem(_ store: Store) -> NSMenuItem {
     let item = MenuItem(title: "Don't log tasks", keyEquivalent: "", actionClosure: { [weak store] in
-        store?.dispatch(action: .Calendar(action: .chooseDefault(logTarget: nil)))
+        store?.dispatch(.calendar(action: .chooseDefault(logTarget: nil)))
     })
     
     if store.state.logTarget == nil {
@@ -73,7 +73,7 @@ func item(from
     let item = MenuItem(title: calendar.title,
                     keyEquivalent: "",
                     actionClosure: {
-                        dispatch(action: .Calendar(action: .chooseDefault(logTarget: logTarget)))
+                        dispatch(.calendar(action: .chooseDefault(logTarget: logTarget)))
     })
     
     if store.state.logTarget?.calendar.calendarIdentifier == calendar.calendarIdentifier {

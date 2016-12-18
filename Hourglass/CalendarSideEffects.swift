@@ -30,7 +30,7 @@ func handleCalendarAction(_ dispatch: Dispatch, _ state: State, _ action: Calend
             let calendar = eventStore.calendar(withIdentifier: defaultCalendarID),
             calendar.mutable == true {
             let logTarget = EventLogTarget(calendar: calendar, eventStore: eventStore)
-            dispatch(action: .Calendar(action: .chooseDefault(logTarget: logTarget)))
+            dispatch(.calendar(action: .chooseDefault(logTarget: logTarget)))
         }
     }
 }

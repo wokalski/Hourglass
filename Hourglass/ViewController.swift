@@ -8,14 +8,13 @@
 
 import Cocoa
 import RealmSwift
-import ReactiveCocoa
 
 class ViewController: NSViewController {
 
     @IBOutlet var collectionView: NSCollectionView?
     
     let realm = try! Realm()
-    lazy var store: Store = Store(sideEffect: sideEffects(app: self))
+    lazy var store: Store = Store(sideEffect: sideEffects(self))
     lazy var delegate: CollectionViewDelegate = CollectionViewDelegate(getDispatch: { [weak self] () -> Dispatch in
         guard let existingSelf = self else {
             return { _ in }
@@ -30,12 +29,12 @@ class ViewController: NSViewController {
         collectionView.delegate = delegate
         collectionView.dataSource = store.dataSource
         collectionView.collectionViewLayout = NSCollectionViewFlowLayout()
-        configureReusableCellsOf(collectionView: collectionView)
+        configureReusableCellsOf(collectionView)
     }
     
-    override func deleteBackward(_ sender: AnyObject?) {
+    override func deleteBackward(_ sender: Any?) {
         if let selectedTask = store.state.selectedTask {
-            store.dispatch(action: .RemoveTask(task: selectedTask))
+            store.dispatch(.removeTask(task: selectedTask))
         }
     }
 }
@@ -44,7 +43,7 @@ class CollectionViewDelegate: NSObject, NSCollectionViewDelegateFlowLayout {
     
     let getDispatch: () -> Dispatch
     
-    init(getDispatch: () -> Dispatch) {
+    init(getDispatch: @escaping () -> Dispatch) {
         self.getDispatch = getDispatch
         super.init()
     }
@@ -60,7 +59,7 @@ class CollectionViewDelegate: NSObject, NSCollectionViewDelegateFlowLayout {
         guard let indexPath = indexPaths.first else {
             return
         }
-        self.getDispatch()(action: .Select(indexPath: indexPath))
+        self.getDispatch()(.select(indexPath: indexPath))
     }
 }
 

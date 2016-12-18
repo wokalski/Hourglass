@@ -3,32 +3,32 @@ import Foundation
 
 class Store {
     
-    init(sideEffect: SideEffect) {
+    init(sideEffect: @escaping SideEffect) {
         self.sideEffect = sideEffect
     }
     
     let sideEffect: SideEffect
     
     // App identity
-    lazy private(set) var state: State = State.initialState
-    lazy private(set) var dataSource: DataSource = DataSource(store: self)
+    lazy fileprivate(set) var state: State = State.initialState
+    lazy fileprivate(set) var dataSource: DataSource = DataSource(store: self)
     
-    private var timer: Timer?
+    fileprivate var timer: Timer?
     
     // Returns a function which can be used to dispatch actions
     var dispatch: Dispatch {
         get {
-            return dispatcher(reducer: applicationReducer, storeChanged: { [weak self] state, action in
+            return dispatcher(applicationReducer, storeChanged: { [weak self] state, action in
                 self?.state = state
                 self?.dataSource = DataSource(store: self)
-                self?.sideEffect(state: state, action: action)
-                })(state: {
+                self?.sideEffect(state, action)
+                })({
                     return self.state
                 })
         }
     }
     
-    func startTimer(every: TimeInterval, do block: () -> Void) {
+    func startTimer(_ every: TimeInterval, do block: @escaping () -> Void) {
         let executor = BlockExecutor(block: block)
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: every,
@@ -45,7 +45,7 @@ class Store {
 }
 
 class BlockExecutor {
-    init(block: () -> Void) {
+    init(block: @escaping () -> Void) {
         self.block = block
     }
     

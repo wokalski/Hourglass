@@ -21,20 +21,20 @@ extension TaskCellViewModel {
         self.init(task: task,
                   selected: selected,
                   onClick: { [weak store] in
-                    store?.dispatch(action: .SessionUpdate(action: handler(task: task, state: state)))
+                    store?.dispatch(.sessionUpdate(action: handler(task, state: state)))
             }, running: running)
     }
 
-    private init(task: Task,
+    fileprivate init(task: Task,
          selected: Bool = false,
-         onClick: () -> Void,
+         onClick: @escaping () -> Void,
          running: Bool) {
         let white = NSColor.white
         let black = NSColor.black
         
         let complete = task.totalTime == task.timeElapsed
         
-        backgroundColor = backgroundForState(selected: selected)
+        backgroundColor = backgroundForState(selected)
         textColor = selected ? white : black
         progress = Double(task.timeElapsed) / Double(task.totalTime)
         timeText = "\(task.timeElapsed.timeString())/\(task.totalTime.timeString())"
@@ -51,13 +51,13 @@ extension TaskCellViewModel {
     }
 }
 
-private func backgroundForState(selected: Bool) -> CGColor {
+private func backgroundForState(_ selected: Bool) -> CGColor {
     let clear = NSColor.clear.cgColor
     let blue = NSColor.blue.cgColor
     return selected ? blue : clear
 }
 
-func handler(task: Task, state: State) -> WorkSessionAction {
+func handler(_ task: Task, state: State) -> WorkSessionAction {
     if let session = state.currentSession,
         session.task.id == task.id {
         return .terminate(session: session)

@@ -3,10 +3,10 @@ import AppKit
 
 final class TaskCell: NSCollectionViewItem {
     
-    @IBOutlet private var taskNameLabel: NSTextField!
-    @IBOutlet private var timeLabel: NSTextField!
-    @IBOutlet private var progressIndicator: NSProgressIndicator!
-    @IBOutlet private var button: NSButton!
+    @IBOutlet fileprivate var taskNameLabel: NSTextField!
+    @IBOutlet fileprivate var timeLabel: NSTextField!
+    @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
+    @IBOutlet fileprivate var button: NSButton!
     
     var viewModel: TaskCellViewModel? = nil {
         didSet {
@@ -32,7 +32,7 @@ final class TaskCell: NSCollectionViewItem {
         }
     }
     
-    @IBAction func click(sender: NSButton) {
+    @IBAction func click(_ sender: NSButton) {
         viewModel?.onClick()
     }
     

@@ -12,7 +12,7 @@ extension Dictionary {
 }
 
 extension Dictionary where Value: Equatable {
-    func deleting(value: Value) -> [Key: Value] {
+    func deleting(_ value: Value) -> [Key: Value] {
         let keyValuePairs = self.filter { $0.value != value }
         var dict = Dictionary<Key, Value>()
         for filtered in keyValuePairs {

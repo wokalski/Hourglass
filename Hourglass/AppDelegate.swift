@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu(title: "")
         let item = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
         menu.addItem(item)
-        menu.addItem(calendarsItem(store: viewController.store))
+        menu.addItem(calendarsItem(viewController.store))
         return menu
     }
     var monitor: AnyObject?
@@ -42,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.action = #selector(togglePopover(sender:))
         statusItem.sendAction(on: [.leftMouseUp, .rightMouseUp])
         super.init()
-        self.viewController.store.dispatch(action: .Init)
+        self.viewController.store.dispatch(.initialize)
     }
     
     func togglePopover(sender: AnyObject?) {
@@ -56,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if let button = statusItem.button {
                     monitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown], handler: { [weak self] _ in
                         self?.togglePopover(sender: self)
-                    })
+                    }) as AnyObject? as AnyObject?
                     popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
                 }
             } else {

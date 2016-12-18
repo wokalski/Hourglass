@@ -3,7 +3,7 @@ import RealmSwift
 import AppKit
 import EventKit
 
-func sideEffects(app: ViewController) -> SideEffect {
+func sideEffects(_ app: ViewController) -> SideEffect {
     return { [weak app] state, action in
         guard let app = app else {
             return
@@ -14,7 +14,7 @@ func sideEffects(app: ViewController) -> SideEffect {
         let dispatch = app.store.dispatch
         
         switch action {
-        case let .NewTask(task):
+        case let .newTask(task):
             guard let task = task else {
                 NSBeep()
                 return
@@ -27,14 +27,14 @@ func sideEffects(app: ViewController) -> SideEffect {
             }
             
             app.collectionView?.reloadData()
-        case let .RemoveTask(task):
+        case let .removeTask(task):
             if state.currentSession == nil {
                 app.store.stopTimer()
             }
             try! realm.write {
                 realm.delete(task)
             }
-        case .TaskUpdate:
+        case .taskUpdate:
             guard let session = state.currentSession else {
                     return
             }
@@ -42,39 +42,39 @@ func sideEffects(app: ViewController) -> SideEffect {
             let task = session.task
             
             if task.timeElapsed >= task.totalTime {
-                dispatch(action: .SessionUpdate(action: .terminate(session: session)))
+                dispatch(.sessionUpdate(action: .terminate(session: session)))
             }
             app.collectionView?.reloadData()
-        case .Select:
+        case .select:
             guard let indexPath = state.selected else {
                 app.collectionView?.deselectAll(nil)
                 return
             }
             app.collectionView?.reloadItems(at: Set([indexPath]))
-        case .Quit:
+        case .quit:
             if let session = state.currentSession {
-                dispatch(action: .SessionUpdate(action: .terminate(session: session)))
+                dispatch(.sessionUpdate(action: .terminate(session: session)))
             }
-        case .Init:
-            let newTaskActions: [Action] = realm.allObjects(ofType: Task.self)
-                .sorted(onProperty: "timeElapsed", ascending: false)
+        case .initialize:
+            let newTaskActions: [Action] = realm.objects(Task.self)
+                .sorted(byProperty: "timeElapsed", ascending: false)
                 .map { task in
-                    .NewTask(task: task)
+                    .newTask(task: task)
             }
             newTaskActions.forEach { action in
-                dispatch(action: action)
+                dispatch(action)
             }
             
-            dispatch(action: .Calendar(action: .initDefault))
-        case let .Calendar(action):
+            dispatch(.calendar(action: .initDefault))
+        case let .calendar(action):
             handleCalendarAction(dispatch, state, action)
-        case .SessionUpdate(let sessionAction):
-            workSessionUpdate(app: app, state: state, action: sessionAction)
+        case .sessionUpdate(let sessionAction):
+            workSessionUpdate(app, state: state, action: sessionAction)
         }
     }
 }
 
-func createTask(name: String, time: HGDuration) -> Task {
+func createTask(_ name: String, time: HGDuration) -> Task {
     let task = Task()
     task.name = name
     task.totalTime = time

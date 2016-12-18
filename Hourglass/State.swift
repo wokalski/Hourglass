@@ -66,11 +66,11 @@ extension State {
             guard let indexPath = selected else {
                 return nil
             }
-            return taskAtIndexPath(indexPath: indexPath)
+            return taskAtIndexPath(indexPath)
         }
     }
     
-    func taskAtIndexPath(indexPath: IndexPath) -> Task? {
+    func taskAtIndexPath(_ indexPath: IndexPath) -> Task? {
         if indexPath.section == 0 {
             return Array(tasks.values)[indexPath.item]
         }

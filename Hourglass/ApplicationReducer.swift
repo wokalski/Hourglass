@@ -1,14 +1,14 @@
 
-func applicationReducer(state: State, action: Action) -> State {
+func applicationReducer(_ state: State, action: Action) -> State {
     switch action {
-    case let .NewTask(task):
+    case let .newTask(task):
         if let task = task {
             return state.set(tasks:
                 state.tasks.set(task.id, task)
             )
         }
         return state
-    case .RemoveTask(let task):
+    case .removeTask(let task):
         let removingSelected = task.id == state.selectedTask?.id
         let selected = removingSelected ? nil : state.selected
         let removingRunning = state.currentSession?.task.id == task.id
@@ -17,9 +17,9 @@ func applicationReducer(state: State, action: Action) -> State {
                      tasks: state.tasks.deleting(task.id),
                      selected: selected,
                      logTarget: state.logTarget)
-    case .SessionUpdate(let action):
-        return workSessionReducer(state: state, action: action)
-    case let .TaskUpdate(update):
+    case .sessionUpdate(let action):
+        return workSessionReducer(state, action: action)
+    case let .taskUpdate(update):
         let task = state.tasks[update.id]
         if let task = task {
             // Side effects here - not ideal
@@ -31,7 +31,7 @@ func applicationReducer(state: State, action: Action) -> State {
         } else {
             return state
         }
-    case .Select(let indexPath):
+    case .select(let indexPath):
         guard let indexPath = indexPath else {
             return state.set(selected: nil)
         }
@@ -39,16 +39,16 @@ func applicationReducer(state: State, action: Action) -> State {
             return state.set(selected: nil)
         }
         return state.set(selected: indexPath)
-    case .Calendar(let action):
-        return calendarReducer(state: state, action: action)
-    case .Quit:
+    case .calendar(let action):
+        return calendarReducer(state, action: action)
+    case .quit:
         return state
-    case .Init:
+    case .initialize:
         return state
     }
 }
 
-func workSessionReducer(state: State, action: WorkSessionAction) -> State {
+func workSessionReducer(_ state: State, action: WorkSessionAction) -> State {
     switch action {
     case .start(let task):
         if task.totalTime > task.timeElapsed {
@@ -62,7 +62,7 @@ func workSessionReducer(state: State, action: WorkSessionAction) -> State {
     }
 }
 
-func calendarReducer(state: State, action: CalendarAction) -> State {
+func calendarReducer(_ state: State, action: CalendarAction) -> State {
     switch action {
     case .chooseDefault(let calendar):
         return state.set(logTarget: calendar)

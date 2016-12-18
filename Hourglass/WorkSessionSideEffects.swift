@@ -1,7 +1,7 @@
 import Foundation
 
 func workSessionUpdate(
-    app: ViewController,
+    _ app: ViewController,
     state: State,
     action: WorkSessionAction) {
     
@@ -13,11 +13,10 @@ func workSessionUpdate(
             return
         }
         
-        app.store.startTimer(every: 1, do: {
-            dispatch(action:
-                .TaskUpdate(task:
+        app.store.startTimer(1, do: {
+            dispatch(.taskUpdate(task:
                     TaskUpdate(task: session.task)
-                        .set(timeElapsed: session.task.timeElapsed + 1
+                        .set(session.task.timeElapsed + 1
                     )
                 )
             )
@@ -33,6 +32,6 @@ func workSessionUpdate(
             NSUserNotificationCenter.default.deliver(notification)
         }
         
-        dispatch(action: .Calendar(action: .logTask(task: task, startTime: session.startTime)))
+        dispatch(.calendar(action: .logTask(task: task, startTime: session.startTime)))
     }
 }

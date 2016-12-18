@@ -6,14 +6,14 @@ import EventKit
 typealias HGDuration = IntMax
 
 enum Action {
-    case NewTask(task: Task?)
-    case RemoveTask(task: Task)
-    case TaskUpdate(task: TaskProtocol)
-    case SessionUpdate(action: WorkSessionAction)
-    case Calendar(action: CalendarAction)
-    case Select(indexPath: IndexPath?)
-    case Init
-    case Quit
+    case newTask(task: Task?)
+    case removeTask(task: Task)
+    case taskUpdate(task: TaskProtocol)
+    case sessionUpdate(action: WorkSessionAction)
+    case calendar(action: CalendarAction)
+    case select(indexPath: IndexPath?)
+    case initialize
+    case quit
 }
 
 enum WorkSessionAction {
@@ -28,6 +28,6 @@ enum CalendarAction {
 }
 
 enum LifeCycleAction {
-    case Init
-    case Quit
+    case initialize
+    case quit
 }
